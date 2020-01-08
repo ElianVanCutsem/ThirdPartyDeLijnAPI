@@ -1,0 +1,99 @@
+<!-- BASED OFF HOLLY TEMPLATE : https://cruip.com/holly/
+made by Elian Van Cutsem
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- metas -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>De Lijn | Routeplanning</title>
+    <link rel="shortcut icon" type="image/png" href="img/logo.png"/>
+  <!-- links -->
+    <link rel="stylesheet" href="css/theme.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+  <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,700" rel="stylesheet">
+</head>
+
+<body class="is-boxed has-animations">
+    <div class="body-wrap boxed-container">
+        <header class="site-header">
+            <div class="container">
+                <div class="site-header-large-bg"><span></span></div>
+                <div class="site-header-inner">
+                    <div class="brand header-brand is-revealing newsletter-form">
+                        <h1 class="m-0"><a href="#"><img class="logo" src="img/logo.png" alt="De Lijn"/></a></h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-inner">
+                        <div class="hero-copy">
+                            <div class="container-sm">
+                                <h2 class="hero-title h2-mobile mt-0 is-revealing">RoutePlanner</h2>
+                                <p class="hero-paragraph is-revealing">Search your route below:</p>
+                                <div class="is-revealing newsletter-form">
+                                  <input id="departureRadio" type="radio" name="departureRadio" checked="checked" value="VERTREK">departure
+                                  <input id="arrivalRadio" type="radio" name="departureRadio" value="AANKOMST">arrival<br>
+
+                                  <label id="departureDateLabel">Date & time of departure</label>
+                                  <input class="input" id="departureDate" type="datetime-local"><br />
+                                </div>
+                                <div class="hero-form newsletter-form field field-grouped is-revealing">
+
+                                    <div class="control control-expanded">
+                                      <label>From:</label>
+                                      <input id="start" class="input" type="text" placeholder="departure"><br>
+                                      <select id="startSelect" class="input dropDown"></select>
+                                    </div>
+                                    <div>
+                                      <img id="switch" alt="switch places" class="switch rotateimg90" src="img/switch.png"/>
+                                    </div>
+                                    <div class="control">
+                                      <label>to:</label>
+                                      <input id="destination" class="input" type="text" placeholder="arrival"><br>
+                                      <select id="destinationSelect" class="input dropDown"></select>
+                                    </div>
+                                </div>
+                                <p class="error" id="errorp">Please fill all marked fields</p>
+                                <button id="locationButton" type="button" class="is-revealing newsletter-form">use location</button>
+                                <button id="submitButton" type="button" class="is-revealing newsletter-form">search route</button>
+                                <div class="is-revealing newsletter-form">
+                                  <h3 class="hidden" id="resultTitle">Results</h3>
+                                  <ul id="results">
+                                  </ul>
+                                </div>
+                                <div class="favourites is-revealing newsletter-form">
+                                  <h3 class="hidden" id="favouritesTitle">favourites</h3>
+                                  <ul id="favourites">
+                                  </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer text-light">
+            <div class="container is-revealing newsletter-form">
+                <div class="site-footer-inner">
+                    <div class="footer-copyright">&copy; 2019 Elian Van Cutsem - CSWS/Javascript<br>Based off Holly template</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="js/script.min.js"></script>
+    <script src="js/snow.min.js"></script>
+    <script src="js/main.min.js"></script>
+</body>
+</html>

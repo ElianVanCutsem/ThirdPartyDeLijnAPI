@@ -1,0 +1,125 @@
+/* CSS BASED OFF HOLLY TEMPLATE : https://cruip.com/holly/
+* Made by Elian Van Cutsem
+*/
+
+h1 {
+  font-size:2em;
+  margin:0.67em 0
+  }
+
+.logo {
+  height: 80px;
+  width: auto;
+  margin-bottom: -80px;
+}
+
+#favourites li {
+  list-style-type: none;
+}
+
+#locationButton {
+  margin-top: 10px;
+  width: 27%;
+  background-color: #FFDD00;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: none;
+}
+
+a {
+  background-color:transparent;-webkit-text-decoration-skip:objects
+  }
+
+img {
+  border-style:none
+  }
+
+a.result {
+  text-decoration: none;
+}
+p.error {
+  color: darkred;
+  font-size: 12pt;
+}
+.switch {
+  width: 20px;
+  margin-top: 45px;
+  margin-right: 15px;
+  height: auto;
+}
+.transportIcon {
+  width: 30px;
+  height: auto;
+  display: inline-block;
+}
+
+.favouriteIcon {
+  width: 30px;
+  height: auto;
+  display: inline-block;
+}
+
+.detailsIcon {
+  width: 20px;
+  margin-left: 10px;
+  height: auto;
+  display: inline-block;
+}
+
+ul #results {
+  max-width: 85%;
+}
+
+#results li.info {
+  margin-top: -30px;
+}
+
+.rotateimg90 {
+  -webkit-transform:rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.rotateimg270 {
+  -webkit-transform:rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+
+input.error {
+  border-color: darkred;
+}
+
+#departureDate {
+  margin-bottom: 20px;
+  width: 85%;
+  max-width: 85%;
+}
+
+#results {
+  margin-top: 20px;
+  margin-left: -5%;
+}
+
+#results li{
+  list-style-type: none;
+  margin-top: 10px;
+}
+
+#submitButton {
+  margin-top: 50px;
+  width: 85%;
+  max-width: 85%;
+  background-color: #FFDD00;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: none;
+}
+
+#favourites{
+  margin-left: -5%;
+}
