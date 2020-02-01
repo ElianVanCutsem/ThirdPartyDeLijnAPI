@@ -378,7 +378,6 @@
     let hours,minutes;
     //if the length is 4 there is no hour given
     if (basic.length == 4){
-      hours = basic.substring(0,1);
       minutes = basic.substring(2,3);
       //return only minutes
       return minutes + "m"
@@ -393,7 +392,7 @@
       hours = basic.substring(0,2);
       minutes = basic.substring(3,5);
     }
-    return hours + "h" + minutes + "m";
+    return hours + "h " + minutes + "m";
   }
 
   //change the string given by API to readable format
@@ -461,155 +460,3 @@
   }
 
 })(jQuery)
-
-// old system
-// just included to show progress
-// I use minified version on the HTML, so this has no impact on speed
-  /*
-  function geefGemeentenr(searchedGemeente){
-    $.ajax({
-            url: "https://api.delijn.be/DLKernOpenData/api/v1/gemeenten?",
-            beforeSend: function(xhrObj){
-                // Request headers
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            },
-            type: "GET",
-            // Request body
-            data: "{body}",
-        })
-        .done(function(json) {
-          let gevondenGemeenten = 0;
-          for(let i = 0; i < json.gemeenten.length;i++){
-            let data = json.gemeenten[i];
-            if (data.omschrijving == searchedGemeente){
-              gevondenGemeenten++;
-              console.log(data.gemeentenummer + " is het nummer van " + data.omschrijving);
-              destinationNr = data.gemeentenummer;
-              geefHaltesVoorGemeente(data.gemeentenummer, "#destinationSelect")
-            }
-          }
-          if (gevondenGemeenten == 0){
-            console.log("gemeente " + searchedGemeente + " is niet gevonden");
-            destinationNr = 0;
-          }
-        })
-        .fail(function() {
-            alert("error");
-        });
-  }
-
-  function geefAlleGemeenten(searchedGemeente, idDropDown){
-    $.ajax({
-            url: "https://api.delijn.be/DLKernOpenData/v1/beta/gemeenten?",
-            beforeSend: function(xhrObj){
-                // Request headers
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            },
-            type: "GET",
-            // Request body
-            data: "{body}",
-        })
-        .done(function(json) {
-          let gevondenGemeenten = 0;
-          for(let i = 0; i < json.gemeenten.length;i++){
-            let data = json.gemeenten[i];
-            //this logs all found entries
-            //console.log(data.gemeentenummer + " is " + data.omschrijving);
-            if (data.omschrijving == searchedGemeente){
-              //this show the found gemeentenummer for the input
-              gevondenGemeenten++;
-              console.log(data.gemeentenummer + " is het nummer van " + data.omschrijving);
-              console.log(data);
-              geefHaltesVoorGemeente(data.gemeentenummer, "#startSelect");
-              geefLijnenVoorGemeente(data.gemeentenummer);
-              //$("#results").append("<li><p>" + data.gemeentenummer + " is het gemeentenummer van " + data.omschrijving + "</p></li>");
-            }
-          }
-          if (gevondenGemeenten == 0){
-            console.log("gemeente " + searchedGemeente + " is niet gevonden");
-            $("#results").append("<li><p> gemeente " + searchedGemeente + " is niet gevonden</p></li>")
-          }
-        })
-        .fail(function() {
-            alert("error getting gemeente");
-        });
-  }
-
-  function geefLijnenVoorGemeente(gemeenteNummer) {
-    $.ajax({
-            url: "https://api.delijn.be/DLKernOpenData/v1/beta/gemeenten/" + gemeenteNummer + "/lijnen?",
-            beforeSend: function(xhrObj){
-                // Request headers
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            },
-            type: "GET",
-            // Request body
-            data: "{body}",
-        })
-        .done(function(json) {
-          for(let i = 0; i < json.lijnen.length;i++){
-            let data = json.lijnen[i];
-            //resultsList.push(data);
-            //console.log(data);
-            //$("#results").append("<li><p>" + data.lijnnummerPubliek + " is " + data.omschrijving + "</p></li>");
-            console.log("bus" + data.lijnnummerPubliek);
-            geefLijn(data.entiteitnummer, data.lijnnummer, data.lijnnummerPubliek);
-          }
-        })
-        .fail(function() {
-            alert("error getting lijnen voor gemeente");
-        });
-  }
-
-  function geefLijn(entiteitnummer, lijnnummer, lijnnummerPubliek){
-    $.ajax({
-            url: "https://api.delijn.be/DLKernOpenData/v1/beta/lijnen/" + entiteitnummer + "/" + lijnnummer + "/gemeenten?",
-            beforeSend: function(xhrObj){
-                // Request headers
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            },
-            type: "GET",
-            // Request body
-            data: "{body}",
-        })
-        .done(function(json) {
-          var foundRoutes = 0;
-          for (var i = 0; i < json.gemeenten.length; i++) {
-            console.log(json.gemeenten[i]);
-            if (json.gemeenten[i].gemeentenummer == destinationNr) {
-              foundRoutes++;
-              //console.log(json);
-              console.log("bus nr " + lijnnummer +" is een match en rijdt naar:");
-              resultsList.push(lijnnummer);
-              //$("#results").append("<li><p>Bus " + lijnnummerPubliek + "</p></li>");
-              //geefEntiteit(entiteitnummer);
-            }
-          }
-        })
-        .fail(function() {
-            alert("error");
-        });
-  }
-
-  function geefHaltesVoorGemeente(gemeentenummer, idDropDown){
-    $.ajax({
-            url: "https://api.delijn.be/DLKernOpenData/v1/beta/gemeenten/" + gemeentenummer + "/haltes?",
-            beforeSend: function(xhrObj){
-                // Request headers
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            },
-            type: "GET",
-            // Request body
-            data: "{body}",
-        })
-        .done(function(data) {
-            console.log(data);
-            $(idDropDown).empty();
-            for (var i = 0; i < data.haltes.length; i++) {
-              $(idDropDown).append("<option value='"+ data.haltes[i].geoCoordinaat.latitude + "," + data.haltes[i].geoCoordinaat.longitude +"'>" + data.haltes[i].omschrijving + "</option>")
-            }
-        })
-        .fail(function() {
-            alert("error getting haltes");
-        });
-  }*/
