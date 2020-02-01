@@ -372,7 +372,6 @@
 
   //this function changes the given API timestring to a better format
   function changeTimeString(timeString){
-    let str = timeString; //the full string
     //delete data that ist used
     let basic = timeString.substring(4, timeString.length - 2);
     let hours,minutes;

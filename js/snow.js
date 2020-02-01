@@ -30,7 +30,7 @@
   	marginBottom = document.body.scrollHeight - 5;
   	marginRight = document.body.clientWidth - 15;
 
-  	for (i = 0; i <= snowMax; i++) {
+  	for (let i = 0; i <= snowMax; i++) {
   		coords[i] = 0;
   		lefr[i] = Math.random() * 15;
   		pos[i] = 0.03 + Math.random() / 10;
@@ -55,7 +55,7 @@
   }
 
   function moveSnow() {
-  	for (i = 0; i <= snowMax; i++) {
+  	for (let i = 0; i <= snowMax; i++) {
   		coords[i] += pos[i];
   		snow[i].posY += snow[i].sink;
   		snow[i].style.left = snow[i].posX + lefr[i] * Math.sin(coords[i]) + "px";
@@ -70,7 +70,7 @@
   	setTimeout("moveSnow()", snowRefresh);
   }
 
-  for (i = 0; i <= snowMax; i++) {
+  for (let i = 0; i <= snowMax; i++) {
   	document.write("<span id='flake" + i + "' style='" + snowStyles + "position:absolute;top:-" + snowMaxSize + "'>" + snowEntity + "</span>");
   }
 
