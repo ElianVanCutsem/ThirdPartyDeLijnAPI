@@ -1,2 +1,3 @@
-# ThirdPartyDeLijnAPI
-This is a website that uses De Lijn API to show routes from start to destination
+# Waypoint
+
+This is web application calculates a route between two points or coördinates. This app only works in Belgium since it's based on the Belgian API's
